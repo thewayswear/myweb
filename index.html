@@ -1,61 +1,225 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to My Web Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-bg: #232946;
+      --secondary-bg: #16161a;
+      --accent: #7279b9;
+      --accent2: #eebbc3;
+      --text: #eaeaea;
+      --muted: #b8c1ec;
+      --card-bg: #2a2a40;
+      --shadow: 0 4px 24px 0 rgba(0,0,0,0.45);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: #4b4a4a;
-      font-family: Arial, sans-serif;
-      color: #cdcdcd;
+      background: linear-gradient(135deg, var(--primary-bg) 70%, var(--accent) 100%);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    header {
+      padding: 2rem 0 1rem 0;
+      text-align: center;
+      letter-spacing: 2px;
+      background: rgba(22, 22, 26, 0.7);
+      box-shadow: var(--shadow);
     }
 
     h1 {
-      text-align: center;
-      color: #7279b9;
+      color: var(--accent);
+      font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+      font-size: 2.7rem;
+      margin-bottom: 0.2em;
+      text-shadow: 2px 2px 16px #000, 0 2px 8px var(--accent2);
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--accent2), 0 0 20px var(--accent), 0 0 30px #000;
+      }
+      to {
+        text-shadow: 0 0 20px var(--accent2), 0 0 30px var(--accent), 0 0 40px #fff;
+      }
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: 1.1em;
+      box-shadow: var(--shadow);
+      padding: 2rem 2rem 1.5rem 2rem;
+      margin: 2rem auto;
+      max-width: 520px;
+      transition: transform 0.2s;
+    }
+
+    section:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 0 8px 32px 0 rgba(114,121,185,0.4);
+    }
+
+    section h2 {
+      color: var(--accent2);
+      font-family: 'Orbitron', 'Roboto', Arial, sans-serif;
+      margin-top: 0;
+      margin-bottom: 0.7em;
+      letter-spacing: 1.5px;
+      font-size: 1.5em;
+      text-shadow: 0 1px 8px #000;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 0.6em;
+      color: var(--accent2);
+      background: linear-gradient(90deg, var(--accent) 65%, var(--accent2) 100%);
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.7em 1.5em;
+      border-radius: 30px;
+      box-shadow: 0 2px 12px 0 rgba(114, 121, 185, 0.25);
+      transition: background 0.2s, transform 0.2s, color 0.2s;
+      font-size: 1.13em;
+      letter-spacing: 1px;
+    }
+    a:hover, a:focus {
+      background: linear-gradient(90deg, var(--accent2) 60%, var(--accent) 100%);
+      color: var(--secondary-bg);
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 4px 24px 0 rgba(238, 187, 195, 0.35);
+    }
+
+    .games-table-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    table {
+      width: 360px;
+      border-collapse: collapse;
+      margin: 0;
+      background: var(--secondary-bg);
+      border-radius: 1em;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      font-size: 1.05em;
+    }
+
+    caption {
+      font-family: 'Orbitron', Arial, sans-serif;
+      color: var(--accent2);
+      font-size: 1.2em;
+      margin: 0.5em 0 0.4em 0;
+      letter-spacing: 1.2px;
+      text-shadow: 0 1px 8px #000;
+    }
+
+    th, td {
+      padding: 1em 1.1em;
+      text-align: left;
+      color: var(--text);
+    }
+
+    th {
+      background: var(--accent);
+      color: var(--secondary-bg);
+      font-family: 'Roboto', Arial, sans-serif;
+      letter-spacing: 1px;
+      font-size: 1.05em;
+    }
+
+    tr {
+      transition: background 0.18s;
+    }
+
+    tr:nth-child(even) td {
+      background: #23294644;
+    }
+
+    tr:hover td {
+      background: var(--accent2);
+      color: var(--secondary-bg);
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      section, .games-table-wrapper, table {
+        max-width: 98vw;
+        width: 98vw;
+        padding: 1em;
+      }
+      body {
+        font-size: 1em;
+      }
+      th, td {
+        padding: 0.7em 0.5em;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Welcome to My Web Page</h1>
+  <header>
+    <h1>Welcome to My Web Page</h1>
+  </header>
   <section>
     <h2>About Me</h2>
-    <p> I have a youtube channel, but I don't post very often, but check it out anyways. Please sub to it, its very
-      appreciated. Link below</p>
-    <a href="https://www.youtube.com/@Theway-v5z" target="_blank" rel="noopener noreferrer"
-      aria-label="Visit my YouTube channel"
-      style="background-color:#4b4a4a;color:#cdcdcd;text-decoration:none;border-radius:1px;">My YouTube Channel</a>
+    <p>
+      I have a YouTube channel, but I don't post very often. Check it out anyways and please sub to it—it's very appreciated!
+      <br>
+      <a href="https://www.youtube.com/@Theway-v5z" target="_blank" rel="noopener noreferrer" aria-label="Visit my YouTube channel">
+        🎬 My YouTube Channel
+      </a>
+    </p>
   </section>
   <section>
     <h2>My Interests</h2>
-    <p>I enjoy coding, gaming, and exploring new technologies. I also really want a new rasperrypi.</p>
+    <p>
+      I enjoy coding, gaming, and exploring new technologies. I also really want a new Raspberry Pi!
+    </p>
   </section>
-  <table>
-    <caption>My Favorite Games</caption>
-    <thead>
-      <tr>
-        <th>Game</th>
-        <th>Genre</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>RocketLeague</td>
-        <td>Car, Soccer</td>
-      </tr>
-      <tr>
-        <td>Roblox</td>
-        <td>Gaming Platform filled with games</td>
-      </tr>
-      <tr>
-        <td>Titanfall 2</td>
-        <td>FPS</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="games-table-wrapper">
+    <table>
+      <caption>My Favorite Games</caption>
+      <thead>
+        <tr>
+          <th>Game</th>
+          <th>Genre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🚗 Rocket League</td>
+          <td>Car, Soccer</td>
+        </tr>
+        <tr>
+          <td>🕹️ Roblox</td>
+          <td>Gaming Platform filled with games</td>
+        </tr>
+        <tr>
+          <td>🤖 Titanfall 2</td>
+          <td>FPS</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 
 </html>
